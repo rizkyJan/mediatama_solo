@@ -1,32 +1,57 @@
 @extends('admin.layouts.app')
 
 @section('isi')
-<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
-    <h2 class="mb-0">Dashboard Admin</h2>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
-        <i class="bi bi-cloud-arrow-up me-1"></i> Upload Video Baru
-    </button>
+<div class="mb-4">
+    <h2 class="fw-bold text-dark">Ringkasan Sistem</h2>
+    <p class="text-muted">Selamat datang kembali, {{ Auth::user()->name }}.</p>
 </div>
 
-<div class="card shadow-sm border-0">
-    <div class="card-body">
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-1">Total Customer</h6>
+                        <h3 class="fw-bold mb-0">{{ $totalCustomer }}</h3>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 p-3 rounded-3">
+                        <i class="bi bi-people-fill text-primary fs-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0 text-nowrap">
-                <thead class="table-light">
-                    <tr>
-                        <th width="5%">ID</th>
-                        <th>Judul Video</th>
-                        <th>Status Request</th>
-                        <th width="15%">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" class="text-center text-muted py-4">Belum ada data video.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-1">Total Video</h6>
+                        <h3 class="fw-bold mb-0">{{ $totalVideo }}</h3>
+                    </div>
+                    <div class="bg-success bg-opacity-10 p-3 rounded-3">
+                        <i class="bi bi-film text-success fs-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-1">Request Akses (Pending)</h6>
+                        <h3 class="fw-bold mb-0">{{ $pendingRequest }}</h3>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 p-3 rounded-3">
+                        <i class="bi bi-clock-history text-warning fs-3"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
