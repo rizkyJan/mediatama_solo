@@ -27,7 +27,7 @@
 
             <div class="mb-3">
                 <label class="form-label">File Video (MP4, Max 100MB)</label>
-                <input type="file" name="video_file" class="form-control @error('video_file') is-invalid @enderror" required>
+                <input type="file" name="video_file" class="form-control @error('video_file') is-invalid @enderror" accept=".mp4, .mov, .ogg, video/*" required>
                 @error('video_file')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
