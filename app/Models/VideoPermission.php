@@ -8,12 +8,13 @@ class VideoPermission extends Model
 {
     protected $fillable = ['video_request_id', 'expired_at'];
 
+    // Memberitahu Laravel bahwa expired_at adalah format tanggal/waktu (Carbon)
     protected $casts = [
-        'expired_at' => 'date_time',
+        'expired_at' => 'datetime',
     ];
 
-    public function videoRequest()
+    public function request()
     {
-        return $this->belongsTo(VideoRequest::class);
+        return $this->belongsTo(VideoRequest::class, 'video_request_id');
     }
 }

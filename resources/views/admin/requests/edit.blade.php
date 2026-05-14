@@ -33,10 +33,8 @@
                 @enderror
             </div>
 
-            @php
-            $displayStyle = old('status', $videoRequest->status) === 'approved' ? 'display: block;' : 'display: none;';
-            @endphp
-            <div class="mb-3" id="expiredDateGroup" style="{{ $displayStyle }}">
+
+            <div class="mb-3" id="expiredDateGroup" @if(old('status', $videoRequest->status) !== 'approved') style="display: none;" @endif>
                 <label class="form-label">Batas Waktu Akses</label>
                 <input type="datetime-local" name="expired_at" class="form-control @error('expired_at') is-invalid @enderror"
                     value="{{ old('expired_at', $videoRequest->permission ? \Carbon\Carbon::parse($videoRequest->permission->expired_at)->format('Y-m-d\TH:i') : '') }}">

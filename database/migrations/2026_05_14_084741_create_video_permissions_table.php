@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('video_permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('video_request_id')->constrained()->onDelete('cascade');
-            $table->timestamp('expires_at');
+            $table->timestamp('expired_at');
             $table->timestamps();
         });
     }

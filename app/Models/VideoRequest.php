@@ -6,19 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class VideoRequest extends Model
 {
-    protected $fillable = ['video_id', 'user_id', 'status'];
+    // Mengizinkan mass assignment untuk kolom-kolom ini
+    protected $fillable = ['user_id', 'video_id', 'status'];
 
+    // Relasi ke tabel users (Customer yang request)
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function videoRequests()
+    // Relasi ke tabel videos (Video yang direquest)
+    public function video()
     {
-        return $this->hasMany(VideoRequest::class);
+        return $this->belongsTo(Video::class);
     }
 
-    public function videoPermissions()
+    // Relasi ke tabel video_permissions (Waktu kedaluwarsa yang diatur admin)
+    public function permission()
     {
         return $this->hasOne(VideoPermission::class);
     }
